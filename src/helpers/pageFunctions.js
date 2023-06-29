@@ -1,5 +1,6 @@
 import { searchCities, getWeatherByCity } from './weatherAPI';
 
+const TOKEN = import.meta.env.VITE_TOKEN;
 /**
  * Cria um elemento HTML com as informações passadas
  */
@@ -77,10 +78,31 @@ export function showForecast(forecastList) {
  * Recebe um objeto com as informações de uma cidade e retorna um elemento HTML
  */
 export function createCityElement(cityInfo) {
-  const { name, country, temp, condition, icon /* , url */ } = cityInfo;
+  const { name, country, temp, condition, icon, url } = cityInfo;
 
   const cityElement = createElement('li', 'city');
-
+  const buttonPrevision = document.createElement('button');
+  buttonPrevision.className = 'city-forecast-button';
+  buttonPrevision.innerText = 'Ver previsão';
+  buttonPrevision.addEventListener('click', async (event) => {
+    event.preventDefault();
+    const URL_API = `http://api.weatherapi.com/v1/forecast.json?lang=pt&key=${TOKEN}&q=${url}&days=7`;
+    const response = await fetch(URL_API);
+    const data = await response.json();
+    const arrayTemps = await data.forecast.forecastday;
+    const objetoInfo = [];
+    arrayTemps.forEach(async (temperatura) => {
+      const objetoDeInfos = await {
+        date: temperatura.date,
+        maxTemp: temperatura.day.maxtemp_c,
+        minTemp: temperatura.day.mintemp_c,
+        condition: temperatura.day.condition.text,
+        icon: temperatura.day.condition.icon,
+      };
+      return objetoInfo.push(objetoDeInfos);
+    });
+    return showForecast(await objetoInfo);
+  });
   const headingElement = createElement('div', 'city-heading');
   const nameElement = createElement('h2', 'city-name', name);
   const countryElement = createElement('p', 'city-country', country);
@@ -103,7 +125,7 @@ export function createCityElement(cityInfo) {
 
   cityElement.appendChild(headingElement);
   cityElement.appendChild(infoContainer);
-
+  cityElement.appendChild(buttonPrevision);
   return cityElement;
 }
 
@@ -120,7 +142,7 @@ export async function handleSearch(event) {
     if (await cities === undefined) {
       throw new Error('Nenhuma cidade encontrada');
     }
-    const promiseAll = await Promise.all(
+    const citiesInfo = await Promise.all(
       cities.map(async (city) => {
         const { url } = city;
         const listItem = await getWeatherByCity(url);
@@ -130,9 +152,9 @@ export async function handleSearch(event) {
         return listItem;
       }),
     );
-    promiseAll.forEach((promise) => {
+    citiesInfo.forEach((cityInfo) => {
       const ul = document.getElementById('cities');
-      const li = createCityElement(promise);
+      const li = createCityElement(cityInfo);
       ul.appendChild(li);
     });
     return promiseAll;
