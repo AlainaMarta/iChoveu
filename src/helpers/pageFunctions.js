@@ -124,9 +124,17 @@ export async function handleSearch(event) {
       cities.map(async (city) => {
         const { url } = city;
         const listItem = await getWeatherByCity(url);
+        listItem.name = city.name;
+        listItem.country = city.country;
+        listItem.url = city.url;
         return listItem;
       }),
     );
+    promiseAll.forEach((promise) => {
+      const ul = document.getElementById('cities');
+      const li = createCityElement(promise);
+      ul.appendChild(li);
+    });
     return promiseAll;
   } catch (error) {
     return error;
