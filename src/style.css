@@ -80,7 +80,7 @@ ul {
   border-radius: 20px;
   display: flex;
   align-items: center;
-  background-color:rgba(254, 254, 254, 0.65);
+  background-color: rgba(254, 254, 254, 0.65);
   flex-flow: column;
 }
 
@@ -242,13 +242,13 @@ ul {
 }
 
 .dark-mode ul li {
-  background-color:rgba(51, 51, 51, 0.60);
+  background-color: rgba(51, 51, 51, 0.6);
   color: rgb(181, 181, 181);
   border: 1px solid rgb(49, 57, 112);
 }
 
 #button-dark-mode {
-  background-color:white;
+  background-color: white;
   background-image: url('imgs/dark_mode.svg');
   background-position: center;
   background-repeat: no-repeat;
@@ -262,7 +262,7 @@ ul {
   cursor: pointer;
 }
 
-.dark-mode  #button-dark-mode {
+.dark-mode #button-dark-mode {
   background-color: white;
   background-image: url('imgs/light_mode.svg');
   background-position: center;
