@@ -136,6 +136,7 @@ ul {
 
 .city-forecast-button:hover {
   background: rgb(0, 151, 219);
+  transition: 0.6s;
 }
 
 .forecast-container {
@@ -244,6 +245,7 @@ ul {
 .dark-mode ul li{
   background-color:#333333c4;
   color: #b5b5b5;
+  border: 1px solid rgb(49, 57, 112);
 }
 
 #button-dark-mode {
@@ -274,4 +276,22 @@ ul {
   font-size: 16px;
   border-radius: 30px;
   cursor: pointer;
+}
+
+.dark-mode .city-forecast-button {
+  background-color: rgb(3, 33, 70);
+}
+
+.dark-mode .city-forecast-button:hover {
+  background: rgb(3, 33, 90);
+}
+
+.dark-mode .forecast-container {
+  background-color:#333333 ;
+  border: 1px solid rgb(3, 33, 100);
+  color: white;
+}
+
+.dark-mode .min {
+  color: aliceblue;
 }
