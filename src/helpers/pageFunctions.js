@@ -166,20 +166,11 @@ export async function handleSearch(event) {
 const buttonDarkMode = document.getElementById('button-dark-mode');
 const { body } = document;
 const imgLogo = document.getElementById('logo');
-const lis = document.getElementsByTagName('li');
 buttonDarkMode.addEventListener('click', () => {
   body.classList.toggle('dark-mode');
   if (body.classList.contains('dark-mode')) {
-    buttonDarkMode.textContent = 'Light Mode';
-    buttonDarkMode.style.backgroundColor = '#b5b5b5';
-    buttonDarkMode.style.color = 'black';
-    li.style.backgroundColor = '#333333c4';
-    imgLogo.src = '/home/alaina/trybe/projetosFront-End/sd-033-a-project-iChoveu/src/imgs/NightIcon.png';
+    imgLogo.src = './src/imgs/NightIcon.png';
   } else {
-    buttonDarkMode.textContent = 'Dark Mode';
-    buttonDarkMode.style.backgroundColor = '#333';
-    buttonDarkMode.style.color = 'white';
-    li.style.backgroundColor = 'aliceblue';
     imgLogo.src = './src/imgs/iChoveuIcon.png';
   }
 });

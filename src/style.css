@@ -80,6 +80,7 @@ ul {
   border-radius: 20px;
   display: flex;
   align-items: center;
+  background-color:#fefeff9e;
   flex-flow: column;
 }
 
@@ -237,13 +238,38 @@ ul {
 .dark-mode {
   background-color: #333;
   color: white;
-  background-image: url('imgs/8127659.jpg');
+  background-image: url('imgs/21449231_6484259.jpg');
+}
+
+.dark-mode ul li{
+  background-color:#333333c4;
+  color: #b5b5b5;
 }
 
 #button-dark-mode {
-  background-color: #333;
+  background-color: #ffffff;
+  background-image: url('imgs/dark_mode.svg');
+  background-position: center;
+  background-repeat: no-repeat;
   color: white;
   border: none;
+  width: 50px;
+  height: 50px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.dark-mode  #button-dark-mode{
+  background-color: #ffffff;
+  background-image: url('imgs/light_mode.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  border: none;
+  width: 50px;
+  height: 50px;
   padding: 10px 20px;
   font-size: 16px;
   border-radius: 30px;
